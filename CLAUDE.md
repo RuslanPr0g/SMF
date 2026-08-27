@@ -37,7 +37,7 @@ creating a record.
 | Fixtures  | `SMF-F-##` | `src/content/fixtures/`  |
 | Incidents | `INC-###`  | `src/content/incidents/` |
 
-Issued to date: SMF-001, 004, 007, 012–017; SMF-F-01; INC-001.
+Issued to date: SMF-001, 004, 007, 012–017; SMF-F-01, SMF-F-02; INC-001.
 
 Full profiles: SMF-001, SMF-004, SMF-007, SMF-013, SMF-014, SMF-015, SMF-016, SMF-017. Only SMF-012 is held as preliminary.
 
