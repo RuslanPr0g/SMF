@@ -9,6 +9,7 @@ import { glob } from 'astro/loaders';
 export const OBJECT_CLASSES = ['Coachable', 'Euclid', 'Uninstall'] as const;
 export const SIDES = ['CT', 'T', 'either'] as const;
 export const STATUSES = ['filed', 'pitch'] as const;
+export const ROLES = ['Entry', 'Support', 'Lurker', 'Anchor', 'Sniper', 'Rescue'] as const;
 
 const objectClass = z.enum(OBJECT_CLASSES);
 const status = z.enum(STATUSES).default('filed');
@@ -28,7 +29,7 @@ const specimens = defineCollection({
     id: z.string().regex(/^SMF-\d{3}$/, 'Specimen ids are SMF-### (e.g. SMF-001)'),
     designation: z.string().optional(),
     objectClass,
-    role: z.array(z.string()).default([]),
+    role: z.array(z.enum(ROLES)).default([]),
     side: z.enum(SIDES).default('either'),
     buyPattern: z.array(z.string()).default([]),
     /** Sub-designations for paired specimens, e.g. ['α', 'β']. */

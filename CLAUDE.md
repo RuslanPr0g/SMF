@@ -56,6 +56,16 @@ severity, not frequency, not the observer's opinion.
 Fixtures are not classified. Full criteria live in `src/content/docs/classes.md`; keep that file
 and this list in agreement.
 
+## Observed role
+
+A closed set, enforced by the schema like the object classes. Anything outside it fails the
+build.
+
+`Entry` · `Support` · `Lurker` · `Anchor` · `Sniper` · `Rescue`
+
+Omit the field entirely where role does not apply -- a behaviour that is not positional, or a
+subject that does not take up a position at all.
+
 ## Writing standard
 
 This is not negotiable and applies to every word of prose in `src/content/`.
