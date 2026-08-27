@@ -3,11 +3,11 @@ id: SMF-F-02
 title: The Paper Stock
 summary: >-
   Stacked printer stock of uniform density which admits projectiles from one bearing and not
-  from its reciprocal.
+  from its reciprocal. Formerly the site's holding position for a class no longer recognised.
 location: Paper, off Cross
 status: filed
 filed: 2026-08-27
-clearance: 2
+clearance: 3
 ---
 
 ## Description
@@ -26,17 +26,12 @@ separate posts and returns the same result each time.
 
 ## Addendum F-02-A: Firing Solution
 
-The passage is not available from an arbitrary position. It requires an elevated stance on the
-adjacent table and a bearing that no post has succeeded in expressing in coordinates.
+The passage is not available from an arbitrary position. It requires an elevated stance and a
+bearing which no post has succeeded in expressing in coordinates, in fourteen attempts.
 
-The description in general circulation refers instead to the wall clock, and gives the bearing
-as the position of the hand between the fifth and sixth hour marks. This archive reproduces
-that description because no more precise one exists, and notes that a site fixture is
-consequently being aimed by reference to another site fixture.
-
-The elevation and bearing required are withheld from this record to discourage replication.
-Both have been in general circulation since [REDACTED], and the withholding is understood by
-this archive to be of no practical effect. The instruction to withhold them stands regardless.
+The solution is transmitted between entities on the floor by demonstration only. This archive
+holds no written form of it and has abandoned the attempt to produce one, on the finding that
+every written form so far produced has been correct and unusable.
 
 ## Addendum F-02-B: Applications for Correction
 
@@ -45,7 +40,25 @@ since commissioning, by nine separate parties. All eleven remain open. None has 
 
 The oldest was submitted before four of the specimens currently on file were first designated.
 
-## Addendum F-02-C: Note from Post Two
+## Addendum F-02-C: Prior Use of the Room
+
+Records predating the current classification refer to this room as a holding position for
+entities described in those records as **mutants**.
+
+The term is deprecated and does not appear in any criterion presently in force. It described a
+degree of severity. The classification currently in use records whether a behaviour changes
+under instruction and records nothing else; severity is not a property this archive measures,
+and a term denoting severity has no position within it.
+
+The entities so described were not reclassified. There is no class to reclassify them into. The
+records naming them were closed rather than amended, and are held at a clearance above that of
+this document. The last record filed under the term is dated [REDACTED].
+
+Observers are reminded that the withdrawal of a term is not a statement about what the term
+described. This archive makes no claim that the room is or is not still in that use, having no
+vocabulary in which such a claim could be filed.
+
+## Addendum F-02-D: Note from Post Two
 
 Post two has asked that the following be attached to the record.
 

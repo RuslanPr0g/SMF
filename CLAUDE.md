@@ -66,6 +66,18 @@ build.
 Omit the field entirely where role does not apply -- a behaviour that is not positional, or a
 subject that does not take up a position at all.
 
+## Deprecated terminology
+
+**Mutant.** Used in records predating the current classification for specimens of extreme
+severity. Deprecated and not to be used in new records. It denoted severity, and the current
+classes denote corrigibility only, so there is no class it maps onto -- the entities it
+described were never reclassified because there was nothing to reclassify them into.
+
+Where it appears, it appears as history: the term is named, its withdrawal is explained, and the
+archive declines to say what it described. Do not define it. Do not attach a specimen to it. The
+withdrawal of a term is not a statement about what the term described, and the joke does not
+survive being explained.
+
 ## Writing standard
 
 This is not negotiable and applies to every word of prose in `src/content/`.
