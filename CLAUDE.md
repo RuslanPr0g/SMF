@@ -37,9 +37,9 @@ creating a record.
 | Fixtures  | `SMF-F-##` | `src/content/fixtures/`  |
 | Incidents | `INC-###`  | `src/content/incidents/` |
 
-Issued to date: SMF-001, 004, 007, 012–016; SMF-F-01; INC-001.
+Issued to date: SMF-001, 004, 007, 012–017; SMF-F-01; INC-001.
 
-Full profiles: SMF-001, SMF-004. All other designations are held as preliminary.
+Full profiles: SMF-001, SMF-004, SMF-017. All other designations are held as preliminary.
 
 Records with `status: pitch` are designations held without a full profile. They render as
 preliminary. Promote one by writing the profile and setting `status: filed`.
