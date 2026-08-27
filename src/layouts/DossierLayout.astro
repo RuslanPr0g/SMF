@@ -15,7 +15,7 @@ const { serial, title, summary, rows, pitch = false } = Astro.props;
 
 <BaseLayout title={`${serial} — ${title}`} description={summary}>
   <article>
-    <p class="serial">Item №&nbsp;{serial}</p>
+    <p class="serial">Item No. {serial}</p>
     <h1>{title}</h1>
     <RecordFields rows={rows} />
     {

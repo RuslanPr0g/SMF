@@ -1,22 +1,36 @@
 /*
- * Design tokens. The visual direction is intentionally undecided -- these are
- * neutral defaults. Retheming the site means editing this file only; no layout,
- * component or content file references a raw colour or font stack.
+ * Design tokens. Every colour, font and rhythm value in the site resolves here.
+ * Retheming means editing this file and nothing else.
  */
 :root {
   color-scheme: light dark;
 
-  --paper: #fbfaf7;
-  --ink: #16181c;
-  --ink-muted: #5d626b;
-  --rule: #d6d3cc;
-  --accent: #7a1f1f;
-  --field: #f1efe9;
+  /* The sheet: an opaque column of paper the content sits on. */
+  --paper: #f7f5f0;
+  --paper-edge: #e4e0d6;
+  --ink: #1a1c20;
+  --ink-muted: #63676f;
+  --rule: #d5d1c7;
+  --accent: #8a2b21;
+  --field: #efece4;
+  --field-rule: #dedad0;
 
-  --font-body: ui-serif, Georgia, 'Times New Roman', serif;
-  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+  /* The backdrop veil, composited over the photograph. */
+  --veil-top: rgba(238, 240, 244, 0.42);
+  --veil-bottom: rgba(202, 209, 220, 0.6);
+  --shell-shadow: 0 1px 2px rgba(24, 26, 30, 0.06), 0 12px 40px rgba(24, 26, 30, 0.14);
 
-  --measure: 68ch;
+  --font-body: ui-serif, Charter, 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, monospace;
+
+  /* Fluid type. Small screens get a slightly tighter scale, never a smaller floor. */
+  --text-xs: 0.72rem;
+  --text-sm: 0.82rem;
+  --text-base: clamp(1rem, 0.97rem + 0.15vw, 1.08rem);
+  --text-lg: clamp(1.1rem, 1.04rem + 0.3vw, 1.25rem);
+  --text-xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.9rem);
+
+  --measure: 66ch;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 1rem;
@@ -24,16 +38,22 @@
   --space-5: 2.5rem;
   --space-6: 4rem;
 
-  --border: 1px solid var(--rule);
+  --rule-hair: 1px solid var(--rule);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #14151a;
-    --ink: #e6e3dc;
-    --ink-muted: #9a9691;
-    --rule: #333741;
-    --accent: #c96a6a;
-    --field: #1c1e25;
+    --paper: #16181c;
+    --paper-edge: #24272d;
+    --ink: #e8e5dd;
+    --ink-muted: #989289;
+    --rule: #2f333a;
+    --accent: #d97b6c;
+    --field: #1c1f24;
+    --field-rule: #2a2e35;
+
+    --veil-top: rgba(10, 12, 16, 0.55);
+    --veil-bottom: rgba(6, 8, 12, 0.74);
+    --shell-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.55);
   }
 }

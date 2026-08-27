@@ -22,9 +22,11 @@ const { items, empty = 'No records filed.' } = Astro.props;
         <li class={item.pitch ? 'pitch' : undefined}>
           <span class="serial">
             {item.serial}
-            {item.pitch ? ' · PRELIMINARY' : ''}
+            {item.pitch ? ' · Preliminary' : ''}
           </span>
-          <a href={item.href}>{item.title}</a>
+          <a class="records__title" href={item.href}>
+            {item.title}
+          </a>
           <p>{item.summary}</p>
         </li>
       ))}

@@ -14,10 +14,12 @@ const nav = [
   { label: 'Archive', href: url('archive') },
   { label: 'Fixtures', href: url('fixtures') },
   { label: 'Incidents', href: url('incidents') },
-  { label: 'Object Classes', href: url('classes') },
+  { label: 'Classes', href: url('classes') },
   { label: 'Site-Office', href: url('site-office') },
   { label: 'Filing', href: url('filing') },
 ];
+
+const isCurrent = (href: string) => here === href.replace(/\/$/, '');
 ---
 
 <html lang="en">
@@ -30,19 +32,22 @@ const nav = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#e6e9ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="preload" as="image" href={url('backdrop-office.webp')} />
+    {/* The backdrop path depends on the configured base, so it is bound here. */}
+    <style is:inline set:html={`:root{--backdrop:url('${url('backdrop-office.webp')}')}`}></style>
   </head>
   <body>
     <div class="shell">
       <header class="masthead">
-        <a href={url('/')}>THE SNOWMEN FILES</a>
-        <nav>
+        <a class="masthead__title" href={url('/')}>The Snowmen Files</a>
+        <p class="masthead__sub">Site-Office · Observation Record</p>
+        <nav aria-label="Sections">
           {
             nav.map((item) => (
-              <a
-                href={item.href}
-                aria-current={here.startsWith(item.href.replace(/\/$/, '')) ? 'page' : undefined}
-              >
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
                 {item.label}
               </a>
             ))
@@ -54,18 +59,10 @@ const nav = [
       </main>
       <footer class="colophon">
         <p>
-          Site-Office · Observation maintained by Snowman Cluster A. Records are held for
-          instructional use. Reproduction outside the archive requires clearance.
+          Observation maintained by Snowman Cluster A. Records are held for instructional use.
+          Reproduction outside the archive requires clearance.
         </p>
       </footer>
     </div>
   </body>
 </html>
-
-<style>
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-  }
-</style>
