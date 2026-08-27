@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecordList from '../../components/RecordList.astro';
+import { listIncidents, url } from '../../lib/archive';
+
+const incidents = await listIncidents();
+---
+
+<BaseLayout title="Incidents" description="Logged sessions in which recorded entities interacted.">
+  <h1>Incidents</h1>
+  <p>
+    An incident is a single session in which two or more recorded entities interacted in a manner
+    worth preserving. Incidents are logged in the order they are reviewed, not the order they
+    occurred.
+  </p>
+  <RecordList
+    items={incidents.map((i) => ({
+      serial: i.data.id,
+      title: i.data.title,
+      summary: i.data.summary,
+      href: url(`incidents/${i.id}`),
+      pitch: i.data.status === 'pitch',
+    }))}
+    empty="No incidents logged."
+  />
+</BaseLayout>

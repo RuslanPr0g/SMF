@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import DossierLayout from '../../layouts/DossierLayout.astro';
+import { listIncidents, resolveReferences } from '../../lib/archive';
+
+export const getStaticPaths = (async () => {
+  const incidents = await listIncidents();
+  return incidents.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const involved = await resolveReferences(d.involves);
+
+const rows: Array<[string, string | undefined]> = [
+  ['Date of Session', d.occurred.toISOString().slice(0, 10)],
+  ['Entities Involved', involved.length ? involved.map((r) => r.id).join(', ') : 'None recorded'],
+  ['Clearance', `Level ${d.clearance}`],
+  ['Date Logged', d.filed.toISOString().slice(0, 10)],
+];
+---
+
+<DossierLayout
+  serial={d.id}
+  title={d.title}
+  summary={d.summary}
+  rows={rows}
+  pitch={d.status === 'pitch'}
+>
+  <Content />
+  {
+    involved.length > 0 && (
+      <>
+        <h2>Referenced Records</h2>
+        <ul>
+          {involved.map((r) => (
+            <li>
+              <a href={r.href}>
+                {r.id} — {r.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</DossierLayout>

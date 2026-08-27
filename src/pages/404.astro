@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/archive';
+---
+
+<BaseLayout title="Record Not Held" description="The requested record is not held at this address.">
+  <h1>Record Not Held</h1>
+  <p class="notice">
+    No record exists at this address. Either the designation was never issued, or the file has been
+    withdrawn from circulation.
+  </p>
+  <p><a href={url('archive')}>Return to the archive index →</a></p>
+</BaseLayout>

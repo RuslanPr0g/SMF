@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecordList from '../../components/RecordList.astro';
+import { listSpecimens, url } from '../../lib/archive';
+
+const specimens = await listSpecimens();
+---
+
+<BaseLayout
+  title="Archive"
+  description="Numbered behavioural profiles of specimens recorded at Site-Office."
+>
+  <h1>Archive</h1>
+  <p>
+    Specimens are numbered on first designation. Numbers are never reassigned. A designation without
+    a full profile is held as preliminary until observation is sufficient.
+  </p>
+  <RecordList
+    items={specimens.map((s) => ({
+      serial: s.data.id,
+      title: s.data.designation ?? s.data.title,
+      summary: s.data.summary,
+      href: url(`archive/${s.id}`),
+      pitch: s.data.status === 'pitch',
+    }))}
+  />
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RecordList from '../components/RecordList.astro';
+import { listSpecimens, listIncidents, url } from '../lib/archive';
+
+const specimens = await listSpecimens();
+const incidents = await listIncidents();
+const filed = specimens.filter((s) => s.data.status === 'filed');
+---
+
+<BaseLayout
+  title="Index"
+  description="Observation records maintained at Site-Office. Specimens, fixtures and incidents."
+>
+  <h1>The Snowmen Files</h1>
+  <p>
+    Site-Office has been under continuous observation since commissioning. The entities that appear
+    on the floor are not staff and are not assigned. They arrive, they act, and they are recorded.
+    This archive holds what has been recorded.
+  </p>
+  <p>
+    Observation is conducted from fixed posts. Observers do not intervene. Nothing in these records
+    should be read as an instruction to correct a subject in progress.
+  </p>
+
+  <h2>Holdings</h2>
+  <dl class="fields">
+    <div><dt>Specimens on file</dt><dd>{filed.length} of {specimens.length} designated</dd></div>
+    <div><dt>Incidents logged</dt><dd>{incidents.length}</dd></div>
+    <div><dt>Observation posts</dt><dd>Snowman Cluster A, four active</dd></div>
+  </dl>
+
+  <h2>Recent designations</h2>
+  <RecordList
+    items={specimens.slice(0, 5).map((s) => ({
+      serial: s.data.id,
+      title: s.data.designation ?? s.data.title,
+      summary: s.data.summary,
+      href: url(`archive/${s.id}`),
+      pitch: s.data.status === 'pitch',
+    }))}
+  />
+  <p><a href={url('archive')}>Full archive →</a></p>
+</BaseLayout>

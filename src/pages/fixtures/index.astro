@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecordList from '../../components/RecordList.astro';
+import { listFixtures, url } from '../../lib/archive';
+
+const fixtures = await listFixtures();
+---
+
+<BaseLayout
+  title="Fixtures"
+  description="Standing features of Site-Office recorded separately from specimens."
+>
+  <h1>Fixtures</h1>
+  <p>
+    Fixtures are permanent features of the site. They are not classified, as classification
+    describes corrigibility and a fixture cannot be instructed. They are recorded because specimens
+    interact with them, often incorrectly.
+  </p>
+  <RecordList
+    items={fixtures.map((f) => ({
+      serial: f.data.id,
+      title: f.data.title,
+      summary: f.data.summary,
+      href: url(`fixtures/${f.id}`),
+      pitch: f.data.status === 'pitch',
+    }))}
+    empty="No fixtures filed."
+  />
+</BaseLayout>

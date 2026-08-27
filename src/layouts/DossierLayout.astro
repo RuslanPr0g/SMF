@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import RecordFields from '../components/RecordFields.astro';
+
+interface Props {
+  serial: string;
+  title: string;
+  summary: string;
+  rows: Array<[label: string, value: string | undefined]>;
+  pitch?: boolean;
+}
+
+const { serial, title, summary, rows, pitch = false } = Astro.props;
+---
+
+<BaseLayout title={`${serial} — ${title}`} description={summary}>
+  <article>
+    <p class="serial">Item №&nbsp;{serial}</p>
+    <h1>{title}</h1>
+    <RecordFields rows={rows} />
+    {
+      pitch && (
+        <p class="notice">
+          Record is preliminary. Observation is ongoing; no full profile has been approved for
+          circulation.
+        </p>
+      )
+    }
+    <slot />
+  </article>
+</BaseLayout>

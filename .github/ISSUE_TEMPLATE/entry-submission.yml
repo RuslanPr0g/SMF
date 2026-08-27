@@ -1,0 +1,57 @@
+name: Record submission
+description: Submit a specimen, fixture or incident for review.
+title: '[Submission] '
+labels: [submission]
+body:
+  - type: dropdown
+    id: series
+    attributes:
+      label: Series
+      options:
+        - Specimen (SMF-###)
+        - Fixture (SMF-F-##)
+        - Incident (INC-###)
+    validations:
+      required: true
+  - type: input
+    id: designation
+    attributes:
+      label: Proposed designation
+      placeholder: The Suppression Enthusiast
+    validations:
+      required: true
+  - type: dropdown
+    id: objectClass
+    attributes:
+      label: Proposed object class
+      description: Specimens only. See the object class criteria before selecting.
+      options: [Coachable, Euclid, Uninstall, Not applicable]
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One or two sentences, clinical register.
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Observations
+      description: >-
+        Describe the behaviour and the conditions under which it was observed. Quantities are
+        preferred to adjectives.
+    validations:
+      required: true
+  - type: checkboxes
+    id: standard
+    attributes:
+      label: Drafting standard
+      options:
+        - label: The record describes a category of behaviour, not an individual.
+          required: true
+        - label: No names, handles or identifying detail of any kind are included.
+          required: true
+        - label: The register is clinical throughout.
+          required: true

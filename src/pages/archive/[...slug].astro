@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import DossierLayout from '../../layouts/DossierLayout.astro';
+import { listSpecimens } from '../../lib/archive';
+
+export const getStaticPaths = (async () => {
+  const specimens = await listSpecimens();
+  return specimens.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const rows: Array<[string, string | undefined]> = [
+  ['Object Class', d.objectClass],
+  ['Designation', d.designation],
+  ['Sub-designations', d.subDesignations.length ? d.subDesignations.join(' / ') : undefined],
+  ['Observed Role', d.role.length ? d.role.join(', ') : undefined],
+  ['Spawn Side', d.side === 'either' ? 'Both' : d.side],
+  ['Procurement', d.buyPattern.length ? d.buyPattern.join(', ') : undefined],
+  ['Clearance', `Level ${d.clearance}`],
+  ['Date Filed', d.filed.toISOString().slice(0, 10)],
+];
+---
+
+<DossierLayout
+  serial={d.id}
+  title={d.designation ?? d.title}
+  summary={d.summary}
+  rows={rows}
+  pitch={d.status === 'pitch'}
+>
+  <Content />
+</DossierLayout>

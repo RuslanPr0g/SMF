@@ -1,0 +1,19 @@
+---
+interface Props {
+  /** Ordered field rows. Entries with an empty value are omitted. */
+  rows: Array<[label: string, value: string | undefined]>;
+}
+
+const rows = Astro.props.rows.filter(([, value]) => value && value.length > 0);
+---
+
+<dl class="fields">
+  {
+    rows.map(([label, value]) => (
+      <div>
+        <dt>{label}</dt>
+        <dd>{value}</dd>
+      </div>
+    ))
+  }
+</dl>

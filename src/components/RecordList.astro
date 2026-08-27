@@ -1,0 +1,33 @@
+---
+interface Props {
+  items: Array<{
+    serial: string;
+    title: string;
+    summary: string;
+    href: string;
+    pitch?: boolean;
+  }>;
+  empty?: string;
+}
+
+const { items, empty = 'No records filed.' } = Astro.props;
+---
+
+{
+  items.length === 0 ? (
+    <p class="notice">{empty}</p>
+  ) : (
+    <ul class="records">
+      {items.map((item) => (
+        <li class={item.pitch ? 'pitch' : undefined}>
+          <span class="serial">
+            {item.serial}
+            {item.pitch ? ' · PRELIMINARY' : ''}
+          </span>
+          <a href={item.href}>{item.title}</a>
+          <p>{item.summary}</p>
+        </li>
+      ))}
+    </ul>
+  )
+}
